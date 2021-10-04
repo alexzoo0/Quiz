@@ -13,32 +13,27 @@
     <div class="time"><strong>Time: <span id="timer">0</span></strong></div>
     </div> 
     <div class="box">
-        <div id="container">
         <div id="start" class="starter">
             <h1>Quiz Challenge</h1>
             <p>Here in this quiz you will test your skills to show your sucess! Answer every question carefullly, if answered wrong 10 seconds will be deducted from the timer. you have 2:00 minutes to answer 10 questions. Good luck!</p>
-            <button id="starter">Start Quiz</button>
+            <button id="starter"><strong id="starter">Start Quiz</strong></button>
         </div>
     </div>
-    <div class="container" class="hide">
-        <div id="questions" class="hide"><p style="color: white;">Questions</p></div>
-        <div id="answer" class="hide">
-            <button class="button">Answer 1</button>
-            <button class="button">Answer 2</button>
-            <button class="button">Answer 3</button>
-            <button class="button">Answer 4</button>
-        </div>
+    <div id="container3" class="hide">
+        <h2 style="color: white;" id="questions"></h2>
+        <div id="answer"></div>
     </div>
     <div id="last-screen" class="hide">
         <h2 style="color: white;">And your final score is:<span id="score"></span>.</h2>
-        <form>
+        <div>
             <p style="color: white;"><strong>Enter your initials:</strong></p>
             <input type="text" name="initials" id="init"/>
             <button id="enter">Submit</button>
 
-        </form>
+        </div>
     </div>
-    
+    <div id="answer-check" class="hide"></div>
 
+    <script src="/assets/js/json.js"></script>
 </body>
 </html>

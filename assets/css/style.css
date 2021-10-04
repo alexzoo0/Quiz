@@ -11,13 +11,13 @@ body{
 .high{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
-    color: teal;
+    color: black;
 
 }
 .time{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
-    color: teal;
+    color: black;
 }
 .box{
     display: flex;
@@ -26,18 +26,17 @@ body{
 .starter{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
-    color: teal;
+    color: #fce1ac;
 }
 h1{
-    color: white;
+    color: #fce1ac;
 }
 button{
-    background-color: teal;
-    color: white;
+    background-color: #fce1ac;
+    color: black;
     border-style: none;
     border-radius: 10px;
-    height: 2.3rem;
-    width: 6rem;
+    padding: 10px;
     margin: 10px;
 }
 input{
