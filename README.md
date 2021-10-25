@@ -1,4 +1,4 @@
-# el-buen-sabor
+# Muiltiple Choice Quiz
 API #1: 
 
 GIT PAGE LINK: https://alexzoo0.github.io/Quiz/
@@ -8,7 +8,7 @@ GIT PAGE LINK: https://alexzoo0.github.io/Quiz/
 Quiz Challenge
 
 ## Project Description
-Recipe app for finding and collecting recipes.
+With this quiz you are able to answer questions and save a score with your initials.
 
 ## Visuals
 <img src="assets/images/Screen Shot 2021-10-06 at 12.53.53 AM.png" alt="Site visuals">

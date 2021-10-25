@@ -1,10 +1,18 @@
 var questionsP = document.querySelector("#container3");
 var answers = document.querySelector("#answer");
+var starter = document.querySelector("#start");
 var start = document.querySelector("#starter");
 var enterBtn = document.querySelector("#enter");
 var times = document.querySelector("#timer");
 var initials = document.querySelector("#init");
 var checker = document.querySelector("#answer-check");
+var high = document.querySelector("#highScores");
+var score = document.querySelector("#scores");
+var back = document.querySelector("#Back");
+var Clear = document.querySelector("#Clears");
+var lastScreen = document.querySelector("#last-screen");
+
+
 
 var questions = [
     {
@@ -39,16 +47,6 @@ var questions = [
         answer: "A function that operates on other functions ."
     },
     {
-        title: 'what are higher order functions?',
-        choices: [
-            "Functions that control the whole javascript page.", 
-            "A Function that can control multiple functions.", 
-            "A function that operates on other functions .",
-            "You need to start with higher order functions before you start coding on you javascript page.", 
-        ],
-        answer: "A function that operates on other functions ."
-    },
-    {
         title: 'what are data attributes?',
         choices: [
             "Tags to store data.", 
@@ -68,18 +66,59 @@ var questions = [
         ],
         answer: "Using the querySelector."
     },
-    
+    {
+        title: 'what are data attributes1?',
+        choices: [
+            "Tags to store data.", 
+            "Are used to store extra information in the DOM.", 
+            "attributes you can add in css to store data.",
+            "Types of data you can access in html.", 
+        ],
+        answer: "Are used to store extra information in the DOM."
+      },
+      {
+        title: 'what are data attributes?2',
+        choices: [
+            "Tags to store data.", 
+            "Are used to store extra information in the DOM.", 
+            "attributes you can add in css to store data.",
+            "Types of data you can access in html.", 
+        ],
+        answer: "Are used to store extra information in the DOM."
+      },
+      {
+        title: 'what are data attributes3?',
+        choices: [
+            "Tags to store data.", 
+            "Are used to store extra information in the DOM.", 
+            "attributes you can add in css to store data.",
+            "Types of data you can access in html.", 
+        ],
+        answer: "Are used to store extra information in the DOM."
+      },
+      {
+        title: 'what are data attributes4?',
+        choices: [
+            "Tags to store data.", 
+            "Are used to store extra information in the DOM.", 
+            "attributes you can add in css to store data.",
+            "Types of data you can access in html.", 
+        ],
+        answer: "Are used to store extra information in the DOM."
+      },
     
 ];
 
 var currentQuestion = 0;
-var timeA = 180.0;
+var timeA = 100.0;
 var timer;
-var scoreM = 0;
 var highScores = [];
 
 
+start.onclick = clickStart;
 
+initials.onkeyup = checkForEnter;
+// works
 
 function clickStart(){
 
@@ -99,7 +138,7 @@ function timeB(){
     timeA--;
     times.textContent = timeA;
 
-    if (timeA <= 0) {
+    if (timeA === 0) {
         gameOver();
     }
     
@@ -127,7 +166,7 @@ function questionsB(title){
 
 function nextQtn(){
     if(this.value !== questions[currentQuestion].answer){
-        timeA -= 50;
+        timeA -= 30;
 
         if (timeA < 0){
             timeA = 0;
@@ -145,7 +184,7 @@ function nextQtn(){
         checker.setAttribute("class", "answer-check");
         setTimeout(function() {
             checker.setAttribute("class", "answer-check hide");
-        },2000);
+        },1000);
 
         currentQuestion++;
 
@@ -159,7 +198,7 @@ function nextQtn(){
 
 function gameOver() {
     clearInterval(timer);
-    var lastScreen = document.getElementById("#last-screen");
+    var lastScreen = document.getElementById("last-screen");
     lastScreen.removeAttribute("class");
 
     var finalS = document.getElementById("score");
@@ -168,5 +207,58 @@ function gameOver() {
 }
 
 
+function saveHighscore(){
+    score.innerHTML = "";
+    show(high);
+    highScores = JSON.parse(localStorage.getItem("scores"));
+    for(var i = 0; i < highScores.length; i++){
+        var scoreItem = document.createElement("div");
+        console.log(scoreItem);
+        scoreItem.setAttribute("style", "background-color:PaleTurquoise;");
+        scoreItem.textContent = `${(i + 1)}. ${highScores[i].username} - ${highScores[i].userScore}`;
+        score.appendChild(scoreItem);
+    }
+}
 
-start.onclick = clickStart;
+enterBtn.addEventListener("click", function(){
+    let initValue = initials.value.trim();
+        if(initValue){
+            var userScore = {username: initValue, userScore: score};
+            initials.value = '';
+            highScores = JSON.parse(localStorage.getItem("scores")) || [];
+            highScores.push(userScore);
+            localStorage.setItem("scores", JSON.stringify(highScores));
+            saveHighscore();
+        }
+});
+
+function hide(element){
+    element.style.display = "none";
+};
+
+function show(element){
+    element.style.display = "inline-block";
+};
+
+enterBtn.addEventListener("click", function(){
+    var highS = document.getElementById("highScores");
+    highS.removeAttribute("class")
+
+    var final = documet.getElementById("last-screen");
+    final.setAttribute("class", "hide");
+});
+
+back.addEventListener("click", function(){
+    hide(high);
+    hide(end);
+    hide(questionsP);
+    show(starter);
+
+});
+
+
+Clear.addEventListener("click", function(){
+    localStorage.Clear();
+    saveHighscore();
+});
+
